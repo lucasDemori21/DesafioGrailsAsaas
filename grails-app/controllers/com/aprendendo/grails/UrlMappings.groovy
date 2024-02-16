@@ -8,10 +8,11 @@ class UrlMappings {
             }
         }
         "/createPayment"(controller: "task", action: "cadastrar")
-
         "/payments"(controller: "task", action: "list")
-
         "/create/payment"(controller: "task", action: "create")
+
+        "/pay/$id"(controller: "task", action: "showUpdate")
+
         "/"(view:"/index")
         "500"(view:'/error')
         "404"(view:'/notFound')
