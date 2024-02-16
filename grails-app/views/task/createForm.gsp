@@ -4,7 +4,9 @@
   <title>Lista de Tarefas</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
 </head>
 
 <body>
@@ -25,7 +27,7 @@
   </div>
   <div class="mb-3">
     <label for="valor" class="form-label">Valor</label>
-    <input type="text" class="form-control" id="valor" placeholder="R$ 199,90">
+    <input type="text" class="form-control money" id="valor" placeholder="R$ 199,90">
   </div>
 
   <div class="d-flex justify-content-end w-100">
@@ -37,9 +39,11 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
 <script>
+
   function cadastrar(){
+
     const nome = document.getElementById('nome').value;
-    const valor = document.getElementById('valor').value;
+    const valor = document.getElementById('valor').value.replace(".", "").replace(",", ".");
 
     $.ajax({
       url: '/createPayment',
@@ -57,6 +61,35 @@
     });
 
   }
+
+  function formatar() {
+    var decimalSep = ',';
+    var thousandSep = '.';
+    var precision = parseInt($('#taxa').data('precision') || 2, 10);
+    $('.money').mask('#' + thousandSep + '##0' + decimalSep + (new Array(precision + 1).join('0')), {
+      'reverse': true,
+      'maxlength': false
+    }).on('keyup', function() {
+      var val = this.value;
+      if (val) {
+        if (val.length <= precision) {
+          while (val.length < precision) {
+            val = '0' + val;
+          }
+          val = '0' + decimalSep + val;
+        } else {
+          var parts = val.split(decimalSep);
+          parts[0] = parts[0].replace(/^0+/, '');
+          if (parts[0].length === 0) {
+            parts[0] = '0';
+          }
+          val = parts.join(decimalSep);
+        }
+        this.value = val;
+      }
+    });
+  }
+  formatar();
 </script>
 
 </body>

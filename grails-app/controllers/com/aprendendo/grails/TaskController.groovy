@@ -5,12 +5,19 @@ import com.aprendendo.grails.Pagamento
 class TaskController {
 
     def list() {
-        def pagamentos = Pagamento.list()
+        List<Pagamento> pagamentos = Pagamento.list()
         render(view: "list", model: [pagamentos: pagamentos])
     }
 
     def create() {
         render(view: "createForm")
+    }
+
+    def showUpdate(int id){
+
+        Pagamento pagamento = Pagamento.findById(id)
+
+        render(view: "update", model: [pagamento: pagamento])
     }
 
 
