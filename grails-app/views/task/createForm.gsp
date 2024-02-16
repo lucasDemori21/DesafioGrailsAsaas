@@ -21,6 +21,7 @@
 </div>
 
 <div class="container w-50 mx-auto">
+
   <div class="mb-3">
     <label for="nome" class="form-label">Nome</label>
     <input type="text" class="form-control" id="nome" placeholder="João">

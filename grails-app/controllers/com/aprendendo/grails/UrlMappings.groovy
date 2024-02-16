@@ -5,6 +5,7 @@ class UrlMappings {
         "/$controller/$action?/$id?(.$format)?"{
             constraints {
                 // apply constraints here
+
             }
         }
         "/createPayment"(controller: "task", action: "cadastrar")
