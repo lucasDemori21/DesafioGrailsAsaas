@@ -29,33 +29,17 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <th>1</th>
-            <td>R$100,00</td>
-            <td>Otto</td>
-            <td>
-                <button class="btn btn-success">Pagar</button>
-                <button class="btn btn-warning">Ver detalhes</button>
-            </td>
-        </tr>
-        <tr>
-            <th>2</th>
-            <td>R$300,00</td>
-            <td>Thornton</td>
-            <td>
-                <button class="btn btn-success">Pagar</button>
-                <button class="btn btn-warning">Ver detalhes</button>
-            </td>
-        </tr>
-        <tr>
-            <th>3</th>
-            <td>R$1500,00</td>
-            <td>@twitter</td>
-            <td>
-                <button class="btn btn-success">Pagar</button>
-                <button class="btn btn-warning">Ver detalhes</button>
-            </td>
-        </tr>
+        <g:each var="pagamento" in="${pagamentos}">
+            <tr>
+                <td>${pagamento.id}</td>
+                <td>${pagamento.nome}</td>
+                <td>${pagamento.valor}</td>
+                <td>
+                    <button class="btn btn-success">Pagar</button>
+                    <button class="btn btn-warning">Ver detalhes</button>
+                </td>
+            </tr>
+        </g:each>
         </tbody>
     </table>
 </div>

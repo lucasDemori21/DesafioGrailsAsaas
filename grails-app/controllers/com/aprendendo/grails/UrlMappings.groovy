@@ -8,7 +8,9 @@ class UrlMappings {
             }
         }
         "/createPayment"(controller: "task", action: "cadastrar")
+
         "/payments"(controller: "task", action: "list")
+
         "/create/payment"(controller: "task", action: "create")
         "/"(view:"/index")
         "500"(view:'/error')
