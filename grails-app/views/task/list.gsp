@@ -1,5 +1,3 @@
-<%@ page import="java.text.NumberFormat" %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,12 +33,10 @@
             <tr>
                 <td>${pagamento.id}</td>
                 <td>${pagamento.nome}</td>
+                <td>${pagamento.valor}</td>
                 <td>
-                   ${NumberFormat.getCurrencyInstance(new Locale('pt', 'BR')).format(pagamento.valor)}
-                </td>
-                <td>
-                    <a href="/pay/${pagamento.id}" class="btn btn-success">Pagar</a>
-                    <a href="/edit/${pagamento.id}" class="btn btn-warning">Ver detalhes</a>
+                    <button class="btn btn-success">Pagar</button>
+                    <button class="btn btn-warning">Ver detalhes</button>
                 </td>
             </tr>
         </g:each>
