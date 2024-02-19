@@ -1,28 +1,29 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: lucas
-  Date: 16/02/2024
-  Time: 10:10
---%>
 
-<%@ page contentType="text/html;charset=UTF-8" %>
-<html>
-<head>
-  <title>Lista de Tarefas</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-</head>
-<body>
+<meta name="layout" content="main"/>
+<title>Editar pagamento</title>
 
-<div class="container">
-
-  <h2>exibicao do update</h2>
-
+<div class="w-100 my-5 d-flex justify-content-around">
+  <h2 class="text-center">Editar pagamento</h2>
+  <a class="btn btn-primary" href="/">Listar pagamentos</a>
 </div>
 
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
-</body>
-</html>
+<g:each var="pagamento" in="${pagamentos}">
+  <div class="container w-50">
+    <form>
+      <input type="hidden" value="${pagamento.id}" id="id"/>
+      <div class="mb-3">
+        <label for="nome" class="form-label">Nome</label>
+        <input class="form-control" type="text" value="${pagamento.nome}" name="nome" id="nome"/>
+      </div>
+      <div class="mb-3">
+        <label for="valor" class="form-label">Valor</label>
+        <input class="form-control money" type="text" name="valor" id="valor"
+               value="${pagamento.valor}"/>
+      </div>
+      <div class="d-flex justify-content-end">
+        <button onclick="destroy()" type="button" class="btn btn-danger"> <i class="bi bi-trash-fill me-1"></i>Excluir</button>
+        <button onclick="editar()" type="button" class="btn btn-success ms-3">Editar</button>
+      </div>
+    </form>
+  </div>
+</g:each>

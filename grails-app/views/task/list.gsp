@@ -1,23 +1,12 @@
 <%@ page import="java.text.NumberFormat" %>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Lista de Tarefas</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<meta name="layout" content="main"/>
+<title>Lista de pagamentos</title>
 
-</head>
-
-<body>
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-md">
-        <a class="navbar-brand" href="/#"><asset:image src="grails.svg" alt="Grails Logo"/></a>
-    </div>
-</nav>
 <div class="w-100 my-5 d-flex justify-content-around">
     <h2 class="text-center">Lista de coisas a pagar</h2>
     <a class="btn btn-primary" href="/create/payment">Gerar mais pagamentos</a>
+    <a class="btn btn-primary" href="/listar/pagos">Listar pagos</a>
 </div>
 
 <div class="container mx-auto">
@@ -39,16 +28,11 @@
                    ${NumberFormat.getCurrencyInstance(new Locale('pt', 'BR')).format(pagamento.valor)}
                 </td>
                 <td>
-                    <a href="/pay/${pagamento.id}" class="btn btn-success">Pagar</a>
-                    <a href="/edit/${pagamento.id}" class="btn btn-warning">Ver detalhes</a>
+                    <a href="/showPay/${pagamento.id}" class="btn btn-success"><i class="bi bi-coin me-1"></i>Pagar</a>
+                    <a href="/showEdit/${pagamento.id}" class="btn btn-primary"><i class="bi bi-pencil-fill me-1"></i>Editar</a>
                 </td>
             </tr>
         </g:each>
         </tbody>
     </table>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
-</body>
-</html>

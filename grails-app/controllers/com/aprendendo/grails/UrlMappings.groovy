@@ -7,13 +7,22 @@ class UrlMappings {
                 // apply constraints here
             }
         }
-        "/createPayment"(controller: "task", action: "cadastrar")
-        "/payments"(controller: "task", action: "list")
-        "/create/payment"(controller: "task", action: "create")
 
-        "/pay/$id"(controller: "task", action: "showUpdate")
+        "/"(controller: "task", action: "list")
+        "/create/payment"(controller: "task", action: "showCreate")
+        "/createPayment"(controller: "task", action: "create")
+        "/listar/pagos"(controller: "task", action: "listPay")
 
-        "/"(view:"/index")
+        get "/showEdit/$id"(controller: "task", action: "showUpdate")
+
+        post "/edit/$id"(controller: "task", action: "update")
+
+        get "/showPay/$id"(controller: "task", action: "showPay")
+
+        post "/confirm/pay/$id"(controller: "task", action: "pay")
+
+        post "/destroy/$id"(controller: "task", action: "destroy")
+
         "500"(view:'/error')
         "404"(view:'/notFound')
 
